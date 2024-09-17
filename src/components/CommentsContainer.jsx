@@ -1,24 +1,24 @@
 import React from "react";
-import { fetchArticles } from "../requests/axiosRequests";
 import { useState, useEffect } from "react";
-import ArticleCard from "./ArticleCard";
+import { fetchCommentsById } from "../requests/axiosRequests";
+import CommentCard from "./CommentCard";
 
-const ArticleList = () => {
-  const [articleList, setArticleList] = useState([]);
+const CommentsContainer = ({ article_id }) => {
+  const [comments, setComments] = useState([]);
   const [isErr, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchArticles()
+    fetchCommentsById(article_id)
       .then((data) => {
-        setArticleList(data.articles);
+        setComments(data.comments);
         setIsLoading(false);
       })
       .catch((err) => {
         setErr(err);
         setIsLoading(false);
       });
-  }, []);
+  }, [article_id]);
 
   if (isLoading === true) {
     return <section>Is loading...</section>;
@@ -30,11 +30,11 @@ const ArticleList = () => {
 
   return (
     <section>
-      {articleList.map((article) => {
-        return <ArticleCard article={article} key={article.article_id} />;
+      {comments.map((comment) => {
+        return <CommentCard comment={comment} key={comment.comment_id} />;
       })}
     </section>
   );
 };
 
-export default ArticleList;
+export default CommentsContainer;

@@ -5,7 +5,11 @@ body {
   background-color: #bfe1b0;
 }
 
-.articleCard {
+.commentCard {
+  color: #000000;
+}
+.articleCard,
+.commentCard {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -19,7 +23,8 @@ body {
   justify-content: space-between;
 }
 
-.articleCard .author {
+.articleCard .author,
+.commentCard .author {
   color: #555555;
 }
 
@@ -33,7 +38,8 @@ body {
   color: #555555;
 }
 
-.articleCard .createdAt {
+.articleCard .createdAt,
+.commentCard .createdAt {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -42,7 +48,8 @@ body {
   font-size: 12px;
 }
 
-.articleCard p {
+.articleCard p,
+.commentCard p {
   margin: 16px;
   font-size: 14px;
   color: #555555;
