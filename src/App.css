@@ -1,42 +1,66 @@
-#root {
+body {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 32px;
+  background-color: #bfe1b0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.articleCard {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.articleCard .articleHeader {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.articleCard .author {
+  color: #555555;
 }
 
-.card {
-  padding: 2em;
+.articleCard .title {
+  font-size: 18px;
+  color: #333333;
 }
 
-.read-the-docs {
-  color: #888;
+.articleCard .topic {
+  margin: 8px 16px;
+  color: #555555;
+}
+
+.articleCard .createdAt {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #bfe1b0;
+  color: #000000;
+  font-size: 12px;
+}
+
+.articleCard p {
+  margin: 16px;
+  font-size: 14px;
+  color: #555555;
+}
+
+.articleCard button {
+  bottom: 16px;
+  left: 16px;
+  background-color: #1d9a6c;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 8px 8px;
+  margin-top: 20px;
+}
+
+.articleCard img {
+  width: 15%;
+  height: 15%;
+  margin: 64px 8px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
 }
