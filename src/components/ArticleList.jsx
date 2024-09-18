@@ -2,6 +2,7 @@ import React from "react";
 import { fetchArticles } from "../requests/axiosRequests";
 import { useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
+import Grid from "@mui/material/Grid2";
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
@@ -29,11 +30,15 @@ const ArticleList = () => {
   }
 
   return (
-    <section>
+    <Grid container spacing={2}>
       {articleList.map((article) => {
-        return <ArticleCard article={article} key={article.article_id} />;
+        return (
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+            <ArticleCard article={article} key={article.article_id} />
+          </Grid>
+        );
       })}
-    </section>
+    </Grid>
   );
 };
 
