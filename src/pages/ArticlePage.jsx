@@ -7,7 +7,7 @@ import CommentsContainer from "../components/CommentsContainer";
 const ArticlePage = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [isErr, setIsErr] = useState(null);
+  const [isErr, setIsErr] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ArticlePage = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setIsErr("Failed to find article");
+        setIsErr(true);
         setIsLoading(false);
       });
   }, [article_id]);
@@ -25,8 +25,8 @@ const ArticlePage = () => {
   if (isLoading === true) {
     return <section>Is loading...</section>;
   }
-  if (isErr) {
-    return <section>{isErr}</section>;
+  if (isErr === true) {
+    return <section>{"Problem with retrieving articles"}</section>;
   }
 
   return (

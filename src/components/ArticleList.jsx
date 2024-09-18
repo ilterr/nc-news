@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid2";
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
-  const [isErr, setErr] = useState(null);
+  const [isErr, setIsErr] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const ArticleList = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr(err);
+        setIsErr(true);
         setIsLoading(false);
       });
   }, []);
@@ -25,8 +25,8 @@ const ArticleList = () => {
     return <section>Is loading...</section>;
   }
 
-  if (isErr) {
-    return <section>{isErr}</section>;
+  if (isErr === true) {
+    return <section>{"Problem with retrieving articles"}</section>;
   }
 
   return (
