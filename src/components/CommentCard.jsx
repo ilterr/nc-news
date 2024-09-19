@@ -4,10 +4,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { light } from "@mui/material/styles/createPalette";
 import Box from "@mui/material/Box";
-import { lighten } from "@mui/material";
-import { lightBlue } from "@mui/material/colors";
 
 const CommentCard = ({ comment }) => {
   const timeDate = `Posted at ${comment.created_at.slice(

@@ -5,11 +5,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardActionArea from "@mui/material/CardActionArea";
-
 import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import { Link } from "react-router-dom";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import { Box } from "@mui/material";
 
 function ArticleCard({ article }) {
   const truncatedBody =
@@ -19,6 +21,10 @@ function ArticleCard({ article }) {
 
   const time = article.created_at.slice(12, 16);
   const date = article.created_at.slice(12, 16);
+
+  const handleVoteClick = (article, voteChange) => {
+    console.log(article, voteChange, article.article_id);
+  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -43,9 +49,19 @@ function ArticleCard({ article }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <Link to={`articles/${article.article_id}`}>
-        <Button size="small">See comments ({article.comment_count})</Button>
-      </Link>
+      <Box sx={{ display: "inline-flex" }}>
+        <Link to={`articles/${article.article_id}`}>
+          <Button size="small">See comments ({article.comment_count})</Button>
+        </Link>
+        <ThumbUpOutlinedIcon
+          sx={{ marginRight: 1, marginLeft: 1 }}
+          onClick={() => {
+            handleVoteClick(article.article_id, 1);
+          }}
+        />
+        <Typography>{article.votes}</Typography>
+        <ThumbDownOutlinedIcon sx={{ marginRight: 1, marginLeft: 1 }} />
+      </Box>
     </Card>
   );
 }

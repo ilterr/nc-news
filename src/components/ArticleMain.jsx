@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Typography, Avatar, CardMedia } from "@mui/material";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 
 const ArticleMain = ({ article }) => {
   const time = article.created_at.slice(12, 16);
@@ -30,6 +32,11 @@ const ArticleMain = ({ article }) => {
           <Typography variant="h6" component="div">
             {article.author}
           </Typography>
+
+          <ThumbUpOutlinedIcon sx={{ marginRight: 1, marginLeft: 1 }} />
+          <Typography>{article.votes}</Typography>
+          <ThumbDownOutlinedIcon sx={{ marginRight: 1, marginLeft: 1 }} />
+
           <Typography variant="body1" color="text.secondary">
             {`Posted at ${time} / ${date}`}
           </Typography>
@@ -49,7 +56,7 @@ const ArticleMain = ({ article }) => {
       <Typography variant="h4" component="h1" gutterBottom>
         {article.title}
       </Typography>
-      <Typography>{article.body}</Typography>
+      <Typography sx={{ marginBottom: 2 }}>{article.body}</Typography>
     </Box>
   );
 };
