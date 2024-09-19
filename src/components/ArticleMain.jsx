@@ -49,7 +49,7 @@ const ArticleMain = ({ article }) => {
       <Typography variant="h4" component="h1" gutterBottom>
         {article.title}
       </Typography>
-      <Typography>{article.body}</Typography>
+      <Typography sx={{ marginBottom: 2 }}>{article.body}</Typography>
     </Box>
   );
 };

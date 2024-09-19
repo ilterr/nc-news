@@ -5,11 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardActionArea from "@mui/material/CardActionArea";
-
 import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
 
 function ArticleCard({ article }) {
   const truncatedBody =
@@ -43,9 +43,12 @@ function ArticleCard({ article }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <Link to={`articles/${article.article_id}`}>
-        <Button size="small">See comments ({article.comment_count})</Button>
-      </Link>
+      <Box sx={{ display: "inline-flex" }}>
+        <Link to={`articles/${article.article_id}`}>
+          <Button size="small">See comments ({article.comment_count})</Button>
+        </Link>
+        <Typography>{article.votes}</Typography>
+      </Box>
     </Card>
   );
 }

@@ -33,8 +33,8 @@ const ArticleList = () => {
     <Grid container spacing={2}>
       {articleList.map((article) => {
         return (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <ArticleCard article={article} key={article.article_id} />
+          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={article.article_id}>
+            <ArticleCard article={article} />
           </Grid>
         );
       })}

@@ -3,11 +3,8 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { light } from "@mui/material/styles/createPalette";
+
 import Box from "@mui/material/Box";
-import { lighten } from "@mui/material";
-import { lightBlue } from "@mui/material/colors";
 
 const CommentCard = ({ comment }) => {
   const timeDate = `Posted at ${comment.created_at.slice(
@@ -19,7 +16,6 @@ const CommentCard = ({ comment }) => {
     <div>
       <Accordion defaultExpanded sx={{ marginBottom: 2 }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
           sx={{ backgroundColor: "#424242" }}
