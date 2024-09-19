@@ -5,11 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: [
-      "@emotion/styled",
-      "@emotion/react",
-      "@mui/material",
-      "@mui/icons-material",
-    ],
+    include: ["@emotion/styled", "@emotion/react", "@mui/material"],
   },
 });
