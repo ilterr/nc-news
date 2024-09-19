@@ -14,18 +14,13 @@ import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsDown } from "react-icons/bs";
 
 function ArticleCard({ article }) {
-  // const [votes, setVotes] = useState(0);
   const truncatedBody =
     article.body.length > 200
       ? `${article.body.slice(0, 200)}...`
       : article.body;
 
   const time = article.created_at.slice(12, 16);
-  const date = article.created_at.slice(12, 16);
-
-  // const handleVoteClick = ({ article }, voteChange) => {
-  //   article.votes += voteChange;
-  // };
+  const date = article.created_at.slice(0, 10);
 
   return (
     <Card sx={{ maxWidth: 345 }}>

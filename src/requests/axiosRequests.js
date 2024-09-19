@@ -24,8 +24,10 @@ export function fetchCommentsById(article_id) {
     });
 }
 
-export function patchVotes(article_id) {
-  return newsApi.patch(`/api/articles/${article_id}`).then(({ data }) => {
-    return data;
-  });
+export function patchVotes(article_id, inc_votes) {
+  return newsApi
+    .patch(`/api/articles/${article_id}`, { inc_votes })
+    .then(({ data }) => {
+      return data;
+    });
 }

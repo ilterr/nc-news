@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Avatar, CardMedia } from "@mui/material";
 import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsDown } from "react-icons/bs";
+import { patchVotes } from "../requests/axiosRequests";
 
 const ArticleMain = ({ article }) => {
+  const [votes, setVotes] = useState(article.votes);
+
   const time = article.created_at.slice(12, 16);
-  const date = article.created_at.slice(12, 16);
+  const date = article.created_at.slice(0, 10);
+
+  const handleVoteUp = () => {
+    const optimisticVote = votes + 1;
+    setVotes(optimisticVote);
+    patchVotes(article.article_id, 1).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const handleVoteDown = () => {
+    const optimisticVotes = votes - 1;
+    setVotes(optimisticVotes);
+    patchVotes(article.article_id, -1).catch((err) => {
+      setVotes(votes);
+    });
+  };
 
   return (
     <Box
@@ -32,9 +51,9 @@ const ArticleMain = ({ article }) => {
           <Typography variant="h6" component="div">
             {article.author}
           </Typography>
-          <BsHandThumbsUp />
-          <Typography>{article.votes}</Typography>
-          <BsHandThumbsDown />
+          <BsHandThumbsUp onClick={handleVoteUp} />
+          <Typography>{votes}</Typography>
+          <BsHandThumbsDown onClick={handleVoteDown} />
           <Typography variant="body1" color="text.secondary">
             {`Posted at ${time} / ${date}`}
           </Typography>
