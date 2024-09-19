@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Typography, Avatar, CardMedia } from "@mui/material";
+import { BsHandThumbsUp } from "react-icons/bs";
+import { BsHandThumbsDown } from "react-icons/bs";
 
 const ArticleMain = ({ article }) => {
   const time = article.created_at.slice(12, 16);
@@ -30,6 +32,9 @@ const ArticleMain = ({ article }) => {
           <Typography variant="h6" component="div">
             {article.author}
           </Typography>
+          <BsHandThumbsUp />
+          <Typography>{article.votes}</Typography>
+          <BsHandThumbsDown />
           <Typography variant="body1" color="text.secondary">
             {`Posted at ${time} / ${date}`}
           </Typography>

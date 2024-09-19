@@ -10,8 +10,11 @@ import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
+import { BsHandThumbsUp } from "react-icons/bs";
+import { BsHandThumbsDown } from "react-icons/bs";
 
 function ArticleCard({ article }) {
+  // const [votes, setVotes] = useState(0);
   const truncatedBody =
     article.body.length > 200
       ? `${article.body.slice(0, 200)}...`
@@ -19,6 +22,10 @@ function ArticleCard({ article }) {
 
   const time = article.created_at.slice(12, 16);
   const date = article.created_at.slice(12, 16);
+
+  // const handleVoteClick = ({ article }, voteChange) => {
+  //   article.votes += voteChange;
+  // };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -47,7 +54,9 @@ function ArticleCard({ article }) {
         <Link to={`articles/${article.article_id}`}>
           <Button size="small">See comments ({article.comment_count})</Button>
         </Link>
+        <BsHandThumbsUp />
         <Typography>{article.votes}</Typography>
+        <BsHandThumbsDown />
       </Box>
     </Card>
   );
