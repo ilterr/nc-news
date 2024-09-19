@@ -9,3 +9,17 @@ export function fetchArticles() {
     return data;
   });
 }
+
+export function fetchArticleById(article_id) {
+  return newsApi.get(`/api/articles/${article_id}`).then(({ data }) => {
+    return data;
+  });
+}
+
+export function fetchCommentsById(article_id) {
+  return newsApi
+    .get(`/api/articles/${article_id}/comments`)
+    .then(({ data }) => {
+      return data;
+    });
+}

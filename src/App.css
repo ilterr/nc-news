@@ -1,11 +1,14 @@
-body {
+#root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 32px;
-  background-color: #bfe1b0;
+  padding: 2rem;
+  text-align: center;
+}
+.commentCard {
+  color: #000000;
 }
 
-.articleCard {
+.commentCard {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -14,26 +17,11 @@ body {
   background-color: #ffffff;
 }
 
-.articleCard .articleHeader {
-  display: flex;
-  justify-content: space-between;
-}
-
-.articleCard .author {
+.commentCard .author {
   color: #555555;
 }
 
-.articleCard .title {
-  font-size: 18px;
-  color: #333333;
-}
-
-.articleCard .topic {
-  margin: 8px 16px;
-  color: #555555;
-}
-
-.articleCard .createdAt {
+.commentCard .createdAt {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -42,25 +30,8 @@ body {
   font-size: 12px;
 }
 
-.articleCard p {
+.commentCard p {
   margin: 16px;
   font-size: 14px;
   color: #555555;
-}
-
-.articleCard button {
-  bottom: 16px;
-  left: 16px;
-  background-color: #1d9a6c;
-  color: #ffffff;
-  font-size: 14px;
-  padding: 8px 8px;
-  margin-top: 20px;
-}
-
-.articleCard img {
-  width: 15%;
-  height: 15%;
-  margin: 64px 8px;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
 }
