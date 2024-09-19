@@ -22,8 +22,8 @@ function ArticleCard({ article }) {
   const time = article.created_at.slice(12, 16);
   const date = article.created_at.slice(12, 16);
 
-  const handleVoteClick = (article, voteChange) => {
-    console.log(article, voteChange, article.article_id);
+  const handleVoteClick = ({ article }, voteChange) => {
+    article.votes += voteChange;
   };
 
   return (
@@ -56,11 +56,16 @@ function ArticleCard({ article }) {
         <ThumbUpOutlinedIcon
           sx={{ marginRight: 1, marginLeft: 1 }}
           onClick={() => {
-            handleVoteClick(article.article_id, 1);
+            handleVoteClick(1);
           }}
         />
         <Typography>{article.votes}</Typography>
-        <ThumbDownOutlinedIcon sx={{ marginRight: 1, marginLeft: 1 }} />
+        <ThumbDownOutlinedIcon
+          sx={{ marginRight: 1, marginLeft: 1 }}
+          onClick={() => {
+            handleVoteClick(-1);
+          }}
+        />
       </Box>
     </Card>
   );

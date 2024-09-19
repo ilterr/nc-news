@@ -23,3 +23,9 @@ export function fetchCommentsById(article_id) {
       return data;
     });
 }
+
+export function patchVotes(article_id) {
+  return newsApi.patch(`/api/articles/${article_id}`).then(({ data }) => {
+    return data;
+  });
+}
