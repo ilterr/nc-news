@@ -9,8 +9,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import { Link } from "react-router-dom";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import { Box } from "@mui/material";
 
 function ArticleCard({ article }) {
@@ -21,10 +19,6 @@ function ArticleCard({ article }) {
 
   const time = article.created_at.slice(12, 16);
   const date = article.created_at.slice(12, 16);
-
-  const handleVoteClick = ({ article }, voteChange) => {
-    article.votes += voteChange;
-  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -53,19 +47,7 @@ function ArticleCard({ article }) {
         <Link to={`articles/${article.article_id}`}>
           <Button size="small">See comments ({article.comment_count})</Button>
         </Link>
-        <ThumbUpOutlinedIcon
-          sx={{ marginRight: 1, marginLeft: 1 }}
-          onClick={() => {
-            handleVoteClick(1);
-          }}
-        />
         <Typography>{article.votes}</Typography>
-        <ThumbDownOutlinedIcon
-          sx={{ marginRight: 1, marginLeft: 1 }}
-          onClick={() => {
-            handleVoteClick(-1);
-          }}
-        />
       </Box>
     </Card>
   );
