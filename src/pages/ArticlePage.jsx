@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchArticleById } from "../requests/axiosRequests";
-import ArticleCard from "../components/ArticleCard";
 import { useParams } from "react-router-dom";
 import CommentsContainer from "../components/CommentsContainer";
+import ArticleMain from "../components/ArticleMain";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -26,12 +26,12 @@ const ArticlePage = () => {
     return <section>Is loading...</section>;
   }
   if (isErr === true) {
-    return <section>{"Problem with retrieving articles"}</section>;
+    return <section>{"Error fetching article"}</section>;
   }
 
   return (
     <>
-      <ArticleCard article={article} />;
+      <ArticleMain article={article} />
       <CommentsContainer article_id={article_id} />
     </>
   );

@@ -26,7 +26,7 @@ const ArticleList = () => {
   }
 
   if (isErr === true) {
-    return <section>{"Problem with retrieving articles"}</section>;
+    return <section>{"Error fetching articles"}</section>;
   }
 
   return (
