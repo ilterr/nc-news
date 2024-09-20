@@ -10,8 +10,6 @@ import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import { BsHandThumbsUp } from "react-icons/bs";
-import { BsHandThumbsDown } from "react-icons/bs";
 
 function ArticleCard({ article }) {
   const truncatedBody =

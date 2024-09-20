@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Box, Typography, Avatar, CardMedia } from "@mui/material";
-import { BsHandThumbsUp } from "react-icons/bs";
-import { BsHandThumbsDown } from "react-icons/bs";
 import { patchVotes } from "../requests/axiosRequests";
+import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 
 const ArticleMain = ({ article }) => {
   const [votes, setVotes] = useState(article.votes);
-
   const time = article.created_at.slice(11, 16);
   const date = article.created_at.slice(0, 10);
 
