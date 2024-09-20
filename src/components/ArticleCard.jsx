@@ -19,7 +19,7 @@ function ArticleCard({ article }) {
       ? `${article.body.slice(0, 200)}...`
       : article.body;
 
-  const time = article.created_at.slice(12, 16);
+  const time = article.created_at.slice(11, 16);
   const date = article.created_at.slice(0, 10);
 
   return (
@@ -27,7 +27,7 @@ function ArticleCard({ article }) {
       <CardHeader
         avatar={<Avatar sx={{ bgcolor: red[500] }} aria-label="User"></Avatar>}
         title={`${article.author}`}
-        subheader={`Posted at ${time} / ${date}`}
+        subheader={`Created at ${time} / ${date}`}
       />
       <CardActionArea component={Link} to={`articles/${article.article_id}`}>
         <CardMedia
@@ -47,11 +47,14 @@ function ArticleCard({ article }) {
       </CardActionArea>
       <Box sx={{ display: "inline-flex" }}>
         <Link to={`articles/${article.article_id}`}>
-          <Button size="small">See comments ({article.comment_count})</Button>
+          <Button sx={{ marginRight: 5 }} size="small">
+            See comments ({article.comment_count})
+          </Button>
         </Link>
-        <BsHandThumbsUp />
-        <Typography>{article.votes}</Typography>
-        <BsHandThumbsDown />
+
+        <Typography sx={{ marginLeft: 1, marginRight: 1 }}>
+          {article.votes} Rating
+        </Typography>
       </Box>
     </Card>
   );

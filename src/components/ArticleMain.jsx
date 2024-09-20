@@ -7,7 +7,7 @@ import { patchVotes } from "../requests/axiosRequests";
 const ArticleMain = ({ article }) => {
   const [votes, setVotes] = useState(article.votes);
 
-  const time = article.created_at.slice(12, 16);
+  const time = article.created_at.slice(11, 16);
   const date = article.created_at.slice(0, 10);
 
   const handleVoteUp = () => {
@@ -55,7 +55,7 @@ const ArticleMain = ({ article }) => {
           <Typography>{votes}</Typography>
           <BsHandThumbsDown onClick={handleVoteDown} />
           <Typography variant="body1" color="text.secondary">
-            {`Posted at ${time} / ${date}`}
+            {`Created at ${time} / ${date}`}
           </Typography>
         </Box>
       </Box>
