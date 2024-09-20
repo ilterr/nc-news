@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import { fetchArticles } from "../requests/axiosRequests";
 
 const useFetchArticles = () => {
-  const [articles, setArticles] = useState([]);
+  const [fetchedArticles, setFetchedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
     fetchArticles()
-      .then((articles) => {
-        setArticles(articles);
+      .then((data) => {
+        setFetchedArticles(data.articles);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -19,7 +19,7 @@ const useFetchArticles = () => {
       });
   }, []);
 
-  return { articles, isLoading, error };
+  return { fetchedArticles, isLoading, error };
 };
 
 export default useFetchArticles;

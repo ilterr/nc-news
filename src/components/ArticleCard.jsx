@@ -13,14 +13,22 @@ import { Box } from "@mui/material";
 import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsDown } from "react-icons/bs";
 
-function ArticleCard({ article }) {
+function ArticleCard({ article, updateArticleVotes }) {
   const truncatedBody =
     article.body.length > 200
       ? `${article.body.slice(0, 200)}...`
       : article.body;
 
-  const time = article.created_at.slice(12, 16);
+  const time = article.created_at.slice(11, 16);
   const date = article.created_at.slice(0, 10);
+
+  const handleVoteUp = () => {
+    updateArticleVotes(article.article_id, 1);
+  };
+
+  const handleVoteDown = () => {
+    updateArticleVotes(article.article_id, -1);
+  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -47,11 +55,15 @@ function ArticleCard({ article }) {
       </CardActionArea>
       <Box sx={{ display: "inline-flex" }}>
         <Link to={`articles/${article.article_id}`}>
-          <Button size="small">See comments ({article.comment_count})</Button>
+          <Button size="small" sx={{ marginRight: 2 }}>
+            See comments ({article.comment_count})
+          </Button>
         </Link>
-        <BsHandThumbsUp />
-        <Typography>{article.votes}</Typography>
-        <BsHandThumbsDown />
+        <BsHandThumbsUp onClick={handleVoteUp} />
+        <Typography sx={{ marginLeft: 1, marginRight: 1 }}>
+          {article.votes}
+        </Typography>
+        <BsHandThumbsDown onClick={handleVoteDown} />
       </Box>
     </Card>
   );

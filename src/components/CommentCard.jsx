@@ -6,10 +6,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const CommentCard = ({ comment }) => {
-  const timeDate = `Posted at ${comment.created_at.slice(
-    12,
-    16
-  )} / ${comment.created_at.slice(0, 10)}`;
+  const time = comment.created_at.slice(11, 16);
+  const date = comment.created_at.slice(0, 10);
 
   return (
     <div>
@@ -27,7 +25,7 @@ const CommentCard = ({ comment }) => {
             }}
           >
             <Typography>{comment.author}</Typography>
-            <Typography>{timeDate}</Typography>{" "}
+            <Typography> {`${time} / ${date}`}</Typography>{" "}
           </Box>
         </AccordionSummary>
         <AccordionDetails sx={{ backgroundColor: "#686868" }}>

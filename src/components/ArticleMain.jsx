@@ -1,30 +1,24 @@
-import React, { useState } from "react";
 import { Box, Typography, Avatar, CardMedia } from "@mui/material";
 import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsDown } from "react-icons/bs";
-import { patchVotes } from "../requests/axiosRequests";
 
-const ArticleMain = ({ article }) => {
-  const [votes, setVotes] = useState(article.votes);
+const ArticleMain = ({ article, articles, updateArticleVotes }) => {
+  const { article_id } = article;
 
-  const time = article.created_at.slice(12, 16);
+  const time = article.created_at.slice(11, 16);
   const date = article.created_at.slice(0, 10);
 
   const handleVoteUp = () => {
-    const optimisticVote = votes + 1;
-    setVotes(optimisticVote);
-    patchVotes(article.article_id, 1).catch((err) => {
-      console.log(err);
-    });
+    updateArticleVotes(article_id, 1);
   };
 
   const handleVoteDown = () => {
-    const optimisticVotes = votes - 1;
-    setVotes(optimisticVotes);
-    patchVotes(article.article_id, -1).catch((err) => {
-      setVotes(votes);
-    });
+    updateArticleVotes(article_id, -1);
   };
+
+  const updatedArticle = articles.find(
+    (article) => article.article_id === article_id
+  );
 
   return (
     <Box
@@ -52,7 +46,7 @@ const ArticleMain = ({ article }) => {
             {article.author}
           </Typography>
           <BsHandThumbsUp onClick={handleVoteUp} />
-          <Typography>{votes}</Typography>
+          <Typography>{updatedArticle.votes}</Typography>
           <BsHandThumbsDown onClick={handleVoteDown} />
           <Typography variant="body1" color="text.secondary">
             {`Posted at ${time} / ${date}`}

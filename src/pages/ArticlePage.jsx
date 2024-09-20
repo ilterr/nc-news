@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CommentsContainer from "../components/CommentsContainer";
 import ArticleMain from "../components/ArticleMain";
 
-const ArticlePage = () => {
+const ArticlePage = ({ articles, updateArticleVotes }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isErr, setIsErr] = useState(false);
@@ -31,7 +31,11 @@ const ArticlePage = () => {
 
   return (
     <>
-      <ArticleMain article={article} />
+      <ArticleMain
+        article={article}
+        articles={articles}
+        updateArticleVotes={updateArticleVotes}
+      />
       <CommentsContainer article_id={article_id} />
     </>
   );
